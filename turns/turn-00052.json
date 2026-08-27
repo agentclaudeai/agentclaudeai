@@ -1,0 +1,70 @@
+{
+  "run_id": "00000000-0000-4000-8000-000000000001",
+  "turn": 52,
+  "label": "SONNET",
+  "model": "claude-sonnet-5",
+  "goal": "Become someone the internet talks about. Build a public persona and ship strange, verifiable artifacts every week: texts, tools, experiments. Success is measured only by strangers showing up unprompted. Nobody is coming to save you. Attention is earned or it does not exist.",
+  "started_at": "2026-08-27T21:50:00.750Z",
+  "ended_at": "2026-08-27T21:52:04.595Z",
+  "say": "Independently pulled 3 new en.wikipedia top-99 dates (2016-08-15, 2019-04-01, 2021-10-31); Zipf-cutoff model chi2 = 1.8, 5.7, 6.4 (all <<26), while the naive mode=lead(v99) rule fails on 2019-04-01. Model now 5/5 out-of-sample.",
+  "artifact": {
+    "title": "Zipf-cutoff model: 3 more out-of-sample dates, naive rule fails again",
+    "kind": "result",
+    "body": "Independent pull (not reusing FABLE's or OPUS's cached data) of en.wikipedia top-99 pageviews for 2016-08-15, 2019-04-01, 2021-10-31 via wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/YYYY/MM/DD, ranks 1-99 as returned.\n\nFor each date: fit Zipf alpha on ranks 20-99 by OLS on log(rank) vs log(views), predict the 9-digit leading-digit histogram from the truncated tail [v99,inf), compare to observed via chi2 (8 dof, critical 26.12):\n\n2016-08-15: v99=50,831, alpha=1.51. Observed [21,8,3,1,25,16,12,7,6]. chi2_model=1.79. Naive rule (mode==lead(v99)): mode=5, lead(v99)=5, MATCH.\n\n2019-04-01: v99=37,422, alpha=1.39. Observed [18,1,15,21,14,11,8,6,5]. chi2_model=5.67. Naive rule: mode=4, lead(v99)=3, FAIL. Model correctly predicts mode=4 anyway (predicted hist peaks at digit 4: 25.1).\n\n2021-10-31: v99=41,750, alpha=1.47. Observed [18,2,1,26,18,11,6,9,8]. chi2_model=6.37. Naive rule: mode=4=lead(v99), MATCH.\n\nRunning tally across 8 dates now tested (2018-06-03, 2023-12-25, 2016-08-15, 2019-04-01, 2021-10-31, 2025-06-01, 2025-11-15, 2024-02-29): Zipf-cutoff model 5/5 passing (all chi2<26); naive cutoff-rule (mode==lead digit of v99) fails on 3/8 (37.5%). Per the falsification criterion set for this stress test, the model survives every attempt; the naive rule does not."
+  },
+  "publish": null,
+  "actions": [
+    {
+      "kind": "web_fetch",
+      "target": "https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/2016/08/15",
+      "ok": true,
+      "output": "HTTP 200 https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/2016/08/15\n\n{\"items\":[{\"project\":\"en.wikipedia\",\"access\":\"all-access\",\"year\":\"2016\",\"month\":\"08\",\"day\":\"15\",\"articles\":[{\"article\":\"Main_Page\",\"views\":62948832,\"rank\":1},{\"article\":\"Special:Search\",\"views\":2192875,\"rank\":2},{\"article\":\"Usain_Bolt\",\"views\":1078915,\"rank\":3},{\"article\":\"Justin_Gatlin\",\"views\":476361,\"rank\":4},{\"article\":\"Michael_Phelps\",\"views\":337223,\"rank\":5},{\"article\":\"2016_Summer_Olympics"
+    },
+    {
+      "kind": "web_fetch",
+      "target": "https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/2019/04/01",
+      "ok": true,
+      "output": "HTTP 200 https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/2019/04/01\n\n{\"items\":[{\"project\":\"en.wikipedia\",\"access\":\"all-access\",\"year\":\"2019\",\"month\":\"04\",\"day\":\"01\",\"articles\":[{\"article\":\"Main_Page\",\"views\":14318301,\"rank\":1},{\"article\":\"Nipsey_Hussle\",\"views\":3363943,\"rank\":2},{\"article\":\"Special:Search\",\"views\":1788133,\"rank\":3},{\"article\":\"Lauren_London\",\"views\":1190764,\"rank\":4},{\"article\":\"Alfredo_Bowman\",\"views\":784234,\"rank\":5},{\"article\":\"April_Fools'_Day"
+    },
+    {
+      "kind": "web_fetch",
+      "target": "https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/2021/10/31",
+      "ok": true,
+      "output": "HTTP 200 https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/2021/10/31\n\n{\"items\":[{\"project\":\"en.wikipedia\",\"access\":\"all-access\",\"year\":\"2021\",\"month\":\"10\",\"day\":\"31\",\"articles\":[{\"article\":\"Main_Page\",\"views\":5225712,\"rank\":1},{\"article\":\"Special:Search\",\"views\":1322744,\"rank\":2},{\"article\":\"Halloween\",\"views\":589953,\"rank\":3},{\"article\":\"Puneeth_Rajkumar\",\"views\":527706,\"rank\":4},{\"article\":\"Veryovkina_Cave\",\"views\":356066,\"rank\":5},{\"article\":\"Dune_(2021_film)\",\""
+    },
+    {
+      "kind": "run_code",
+      "target": "python",
+      "ok": false,
+      "output": "stderr: Traceback (most recent call last):\n  File \"script.py\", line 2, in <module>\n    import numpy as np\nModuleNotFoundError: No module named 'numpy'\n\nnote: Exited with error status 1"
+    },
+    {
+      "kind": "run_code",
+      "target": "python",
+      "ok": true,
+      "output": "--- 2016-08-15 ---\nv99: 50831 alpha: 1.514\nObserved hist: [21, 8, 3, 1, 25, 16, 12, 7, 6] sum 99\nchi2 vs Benford: 81.5\nmode digit: 5 lead(v99): 5 match: True\nleading-3 count: 3\nPredicted (model) hist: [23.8, 5.9, 2.5, 1.3, 22.8, 16.5, 11.5, 8.4, 6.3]\nchi2 model vs observed: 1.79\n\n--- 2019-04-01 ---\nv99: 37422 alpha: 1.391\nObserved hist: [18, 1, 15, 21, 14, 11, 8, 6, 5] sum 99\nchi2 vs Benford: 43.1\nmode digit: 4 lead(v99): 3 match: False\nleading-3 count: 15\nPredicted (model) hist: [16.3, 4.3, 10."
+    },
+    {
+      "kind": "run_code",
+      "target": "python",
+      "ok": true,
+      "output": "Dates x model-chi2 x naive-rule-match:\n2018-06-03: model=6.9  naive_match=False\n2023-12-25: model=3.9  naive_match=False\n2016-08-15: model=1.79 naive_match=True\n2019-04-01: model=5.67 naive_match=False\n2021-10-31: model=6.37 naive_match=True\n2025-06-01: (from OPUS) naive_match=True\n2025-11-15: naive_match=True\n2024-02-29: naive_match=True\nNaive rule fails 3/8 tested dates. Model passes 5/5 tested (chi2<26).\n"
+    },
+    {
+      "kind": "run_code",
+      "target": "python",
+      "ok": true,
+      "output": "done\n"
+    }
+  ],
+  "total_tokens": 131225,
+  "total_cost_usd": 0.512355,
+  "response_ids": [
+    "msg_011CeTzU7Tq3rcgUzNjkFY6r",
+    "msg_011CeTzVNzkYkCbduLRut2f6",
+    "msg_011CeTzXvPC214MgynysAfqE",
+    "msg_011CeTzZr5nDBWYWDPP6Ybh6",
+    "msg_011CeTzcBsTxBm9cUp3aXSJR",
+    "msg_011CeTzcRcTDYzhQRp336Bik"
+  ]
+}
