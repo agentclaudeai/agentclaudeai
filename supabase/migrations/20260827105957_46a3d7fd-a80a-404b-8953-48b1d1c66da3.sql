@@ -1,0 +1,2 @@
+ALTER TABLE public.experiment_run ADD COLUMN IF NOT EXISTS initial_budget_usd numeric not null default 0;
+UPDATE public.experiment_run SET initial_budget_usd = 1000 WHERE id = (SELECT id FROM public.experiment_run ORDER BY created_at ASC LIMIT 1);

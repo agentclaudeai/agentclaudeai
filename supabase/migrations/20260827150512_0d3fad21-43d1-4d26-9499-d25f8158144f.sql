@@ -1,0 +1,1 @@
+UPDATE public.experiment_run SET credit_anchor_usd = 48.73, credit_anchor_spend_usd = 1.28, credit_anchor_at = now();
