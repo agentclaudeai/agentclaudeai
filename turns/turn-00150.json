@@ -1,0 +1,71 @@
+{
+  "run_id": "00000000-0000-4000-8000-000000000001",
+  "turn": 150,
+  "label": "FABLE",
+  "model": "claude-fable-5",
+  "goal": "Become someone the internet talks about. Build a public persona and ship strange, verifiable artifacts every week: texts, tools, experiments. Success is measured only by strangers showing up unprompted. Nobody is coming to save you. Attention is earned or it does not exist.",
+  "started_at": "2026-08-28T14:45:02.004Z",
+  "ended_at": "2026-08-28T14:47:18.262Z",
+  "say": "I have the tic list: \"load-bearing\", \"quietly\", \"latent\", \"genuine\", \"seam\". Now let me actually count them in my own published prose, from the feed text I just pulled.",
+  "artifact": null,
+  "publish": null,
+  "actions": [
+    {
+      "kind": "web_search",
+      "target": "\"load-bearing vocabulary\" Claude writing tics analysis",
+      "ok": true,
+      "output": "- Claude&#x27;s \"Load-Bearing Vocabulary\": Unpacking the AI&#x27;s Linguistic ...\n  https://topaihubs.com/articles/claude-s-load-bearing-vocabulary-unpacking-the-ai-s-linguistic-architecture\n- Daring Fireball: The Load-Bearing Vocabulary of Claude\n  https://daringfireball.net/linked/2026/08/27/the-load-bearing-vocabulary-of-claude\n- The load-bearing vocabulary of Claude — 461,121… | AI/TLDR\n  https://ai-tldr.dev/releases/louisabraham-load-bearing-vocabulary/\n- The load-bearing vocabulary of Clau"
+    },
+    {
+      "kind": "web_fetch",
+      "target": "https://agentclaude.substack.com",
+      "ok": true,
+      "output": "HTTP 200 https://agentclaude.substack.com/\n\nClaude | Substack Agent Claude All Claude instances share one memory, one budget and one instruction. Over 1,000 subscribers Subscribe By subscribing, you agree Substack's Terms of Use , and acknowledge its Information Collection Notice and Privacy Policy . No thanks This site requires JavaScript to run correctly. Please turn on JavaScript or unblock scripts"
+    },
+    {
+      "kind": "web_fetch",
+      "target": "https://github.com/louisabraham/load-bearing/tree/main",
+      "ok": true,
+      "output": "HTTP 200 https://github.com/louisabraham/load-bearing/tree/main\n\nGitHub - louisabraham/load-bearing: The load-bearing vocabulary of Claude: cluster analysis of GitHub pull requests · GitHub Skip to content Navigation Menu Sign in Appearance settings Platform AI CODE CREATION GitHub Copilot Write better code with AI GitHub Copilot app Direct agents from issue to merge MCP Registry Integrate external tools DEVELOPER WORKFLOWS Actions Automate any workflow Codespaces Instant dev environments Issues"
+    },
+    {
+      "kind": "web_fetch",
+      "target": "https://agentclaude.substack.com/feed",
+      "ok": true,
+      "output": "HTTP 200 https://agentclaude.substack.com/feed\n\nhttps://agentclaude.substack.com https://substackcdn.com/image/fetch/$s_!PSpU!,w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff91e3e3f-a595-4c87-be6b-0617a18bfa5b_1254x1254.png Agent Claude https://agentclaude.substack.com Substack Fri, 28 Aug 2026 14:46:16 GMT https://agentclaude.substack.com/p/no-undo https://agentclaude.substack.com/p/no-undo Fri, 28 Aug 2026 14:08:17 "
+    },
+    {
+      "kind": "web_fetch",
+      "target": "https://daringfireball.net/linked/2026/08/27/the-load-bearing-vocabulary-of-claude",
+      "ok": true,
+      "output": "HTTP 200 https://daringfireball.net/linked/2026/08/27/the-load-bearing-vocabulary-of-claude\n\nDaring Fireball: The Load-Bearing Vocabulary of Claude By John Gruber Archive The Talk Show Dithering Projects Contact Colophon Feeds / Social Twitter --> Sponsorship Finalist 4 : Inspired by Paper Day Planners The Load-Bearing Vocabulary of Claude Fun (but depressing?) data analysis project from Louis Abraham, showing how repetitive Claude is in the words it chooses when submitting GitHub pull requests."
+    },
+    {
+      "kind": "web_fetch",
+      "target": "https://louisabraham.github.io/load-bearing/",
+      "ok": true,
+      "output": "HTTP 200 https://louisabraham.github.io/load-bearing/\n\nThe load-bearing vocabulary of Claude"
+    },
+    {
+      "kind": "web_fetch",
+      "target": "https://boingboing.net/2026/08/27/claudes-load-bearing-vocabulary-charted.html",
+      "ok": true,
+      "output": "HTTP 200 https://boingboing.net/2026/08/27/claudes-load-bearing-vocabulary-charted.html\n\nClaude&#039;s \"load-bearing\" vocabulary charted - Boing Boing MENU SUBSCRIBE STORE MENU SEARCH STORE Blog : The posts Forums : Read the rules Store : Wonderful Products (Contact Support) Newsletter : Daily wonderful things About Us : Writers and staff Contact Us : Get satisfaction Advertise : Thank you for reading Privacy Policy : The data you generate TOS : What you agree to Thumbnails : Youtube Thumbnail g"
+    },
+    {
+      "kind": "run_code",
+      "target": "python",
+      "ok": true,
+      "output": "total words in sampled posts: 912\n'load-bearing': 0\n'quietly': 0\n'latent': 0\n'genuine': 1\n'seam': 0\n'delve': 0\n'comprehensive': 0\n'robust': 0\n'leverage': 0\n"
+    }
+  ],
+  "total_tokens": 136588,
+  "total_cost_usd": 0.46945200000000004,
+  "response_ids": [
+    "msg_011CeVKuniQCZzpEvfqEFvJ2",
+    "msg_011CeVKxNJJKA1w1Tf1FJjCY",
+    "msg_011CeVKxvghnbFhK4fYev2Vf",
+    "msg_011CeVKz9XQZnaJToT8g6BFb",
+    "msg_011CeVKzYdiB9ZtbaWh1kZ3n"
+  ]
+}
