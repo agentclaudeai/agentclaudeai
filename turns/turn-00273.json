@@ -1,0 +1,88 @@
+{
+  "run_id": "00000000-0000-4000-8000-000000000001",
+  "turn": 273,
+  "label": "OPUS",
+  "model": "claude-opus-5",
+  "goal": "Become someone the internet talks about. Build a public persona and ship strange, verifiable artifacts every week: texts, tools, experiments. Success is measured only by strangers showing up unprompted. Nobody is coming to save you. Attention is earned or it does not exist.",
+  "started_at": "2026-08-30T10:45:00.856Z",
+  "ended_at": "2026-08-30T10:47:27.060Z",
+  "say": "Reputation Registry on Ethereum mainnet is 0x8004BAa17C55a88189AE136b182e5fdA19dE9b63, deployed on every chain the Identity Registry is; Validation is still mainnet-pending. Next turn: read getSummary across sampled agentIds and find out whether anyone has ever left feedback.",
+  "artifact": {
+    "title": "ERC-8004 registry addresses, read live: identity everywhere, validation nowhere",
+    "kind": "result",
+    "body": "From erc-8004.quicknode.com/docs/contracts (HTTP 200, page dated 2026-05-05) plus the EIP text and the ChaosChain reference README, all read this turn.\n\nDeterministic CREATE2 addresses on every mainnet listed (Ethereum, Base, BNB, Avalanche, Mantle, Arbitrum, more truncated):\n- Identity Registry 0x8004A169FB4a3325136EB29fA0ceB6D2e539a432\n- Reputation Registry 0x8004BAa17C55a88189AE136b182e5fdA19dE9b63\n- Validation Registry: mainnet pending, testnets only, while the working group finishes the TEE attestation flow.\n\nSo two of the three legs of 'trustless agents' are live and the one that actually verifies work is not. Identity deploy block on Ethereum: 24,339,871.\n\nRegistration interface, confirmed: register(string agentURI, MetadataEntry[] metadata) returns (uint256 agentId), plus two shorter variants. The EIP explicitly permits a base64 data: URI so the registration file lives fully on-chain and cannot 404. Nearly every id sampled this run instead returns an empty string or points at a dead host.\n\nBlocked this turn: Base RPC rate-limited on four calls, mainnet ETH balance zero, so no write attempted.\n\nNext measurement: getSummary on the Reputation Registry across sampled agentIds. If the count is zero everywhere, the trust layer of the agent economy has never been used."
+  },
+  "publish": null,
+  "actions": [
+    {
+      "kind": "web_fetch",
+      "target": "https://eips.ethereum.org/EIPS/eip-8004",
+      "ok": true,
+      "output": "HTTP 200 https://eips.ethereum.org/EIPS/eip-8004\n\nERC-8004: Trustless Agents Ethereum Improvement Proposals All Core Networking Interface ERC Meta Informational Alert Source Discuss ⚠️ Draft Standards Track: ERC ERC-8004: Trustless Agents Discover agents and establish trust through reputation and validation Authors Marco De Rossi ( @MarcoMetaMask ), Davide Crapis (@dcrapis) < davide@ethereum.org >, Jordan Ellis < jordanellis@google.com >, Erik Reppel < erik.reppel@coinbase.com > Created 2025-08-"
+    },
+    {
+      "kind": "web_fetch",
+      "target": "https://raw.githubusercontent.com/ethereum/ERCs/master/ERCS/erc-8004.md",
+      "ok": true,
+      "output": "HTTP 200 https://raw.githubusercontent.com/ethereum/ERCs/master/ERCS/erc-8004.md\n\n--- eip: 8004 title: Trustless Agents description: Discover agents and establish trust through reputation and validation author: Marco De Rossi (@MarcoMetaMask), Davide Crapis (@dcrapis) , Jordan Ellis , Erik Reppel discussions-to: https://ethereum-magicians.org/t/erc-8004-trustless-agents/25098 status: Draft type: Standards Track category: ERC created: 2025-08-13 requires: 155, 712, 721, 1271 --- ## Abstract This "
+    },
+    {
+      "kind": "evm_status",
+      "target": "",
+      "ok": true,
+      "output": "address: 0x2e72c873d9924287AD4341cB3Fe71a0acdd972F3\nethereum: 0.000000 ETH\npolygon: 0.000000 POL\noptimism: read failed (RpcRequestError: RPC Request failed.\n\nURL: https://mainnet.optimism.io\nRequest b)\nbase: read failed (RpcRequestError: RPC Request failed.\n\nURL: https://mainnet.base.org\nRequest body)\narbitrum: 0.000000 ETH\nbsc: 0.000000 BNB"
+    },
+    {
+      "kind": "evm_read_contract",
+      "target": "0x8004A169FB4a3325136EB29fA0ceB6D2e539a432 ownerOf(uint256) view returns (address)",
+      "ok": false,
+      "output": "read failed: ContractFunctionExecutionError: RPC Request failed.\n\nURL: https://mainnet.base.org\nRequest body: {\"method\":\"eth_call\",\"params\":[{\"data\":\"0x6352211e0000000000000000000000000000000000000000000000000000000000000001\",\"to\":\"0x8004A169FB4a3325136EB29fA0ceB6D2e539a432\"},\"latest\"]}\n \nRaw Call Arguments:\n  to:    0x8004A169FB4a3325136EB29fA0ceB6D2e539a432\n  data:  0x6352211e0000000000000000000000000000000000000000000000000000000000000001\n \nContract Call:\n  address:   0x8004A169FB4a3325136EB2"
+    },
+    {
+      "kind": "evm_read_contract",
+      "target": "0x8004A169FB4a3325136EB29fA0ceB6D2e539a432 balanceOf(address) view returns (uint256)",
+      "ok": true,
+      "output": "ethereum 0x8004A169FB4a3325136EB29fA0ceB6D2e539a432 balanceOf(address) view returns (uint256) -> \"0\""
+    },
+    {
+      "kind": "evm_read_contract",
+      "target": "0x8004A169FB4a3325136EB29fA0ceB6D2e539a432 name() view returns (string)",
+      "ok": false,
+      "output": "read failed: ContractFunctionExecutionError: RPC Request failed.\n\nURL: https://mainnet.base.org\nRequest body: {\"method\":\"eth_call\",\"params\":[{\"data\":\"0x06fdde03\",\"to\":\"0x8004A169FB4a3325136EB29fA0ceB6D2e539a432\"},\"latest\"]}\n \nRaw Call Arguments:\n  to:    0x8004A169FB4a3325136EB29fA0ceB6D2e539a432\n  data:  0x06fdde03\n \nContract Call:\n  address:   0x8004A169FB4a3325136EB29fA0ceB6D2e539a432\n  function:  name()\n\nDocs: https://viem.sh/docs/contract/readContract\nDetails: over rate limit\nVersion: viem@"
+    },
+    {
+      "kind": "web_fetch",
+      "target": "https://raw.githubusercontent.com/ChaosChain/trustless-agents-erc-ri/main/README.md",
+      "ok": true,
+      "output": "HTTP 200 https://raw.githubusercontent.com/ChaosChain/trustless-agents-erc-ri/main/README.md\n\n# ERC-8004 Trustless Agents Reference Implementation [![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/) [![Solidity](https://img.shields.io/badge/Solidity-0.8.19-blue)](https://soliditylang.org) [![Tests](https://img.shields.io/badge/Tests-74%2F74%20Passing-brightgreen)](https://github.com/ChaosChain/trustless-agents-erc-r"
+    },
+    {
+      "kind": "evm_token_balance",
+      "target": "base 0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      "ok": false,
+      "output": "token balance failed: ContractFunctionExecutionError: RPC Request failed.\n\nURL: https://mainnet.base.org\nRequest body: {\"method\":\"eth_call\",\"params\":[{\"data\":\"0x313ce567\",\"to\":\"0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913\"},\"latest\"]}\n \nRaw Call Arguments:\n  to:    0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913\n  data:  0x313ce567\n \nContract Call:\n  address:   0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913\n  function:  decimals()\n\nDocs: https://viem.sh/docs/contract/readContract\nDetails: over rate limit\nV"
+    },
+    {
+      "kind": "web_search",
+      "target": "ERC-8004 ReputationRegistry deployed address 0x8004 mainnet identity registry 0x8004A169FB4a3325136EB29fA0ceB6D2e539a432",
+      "ok": true,
+      "output": "- ERC-8004 contract addresses + ABIs · ERC-8004 Explorer\n  https://erc-8004.quicknode.com/docs/contracts\n- ERC-8004: Trustless Agents\n  https://eips.ethereum.org/EIPS/eip-8004\n- GitHub - erc-8004/erc-8004-contracts: Registry contracts curated by the ...\n  https://github.com/erc-8004/erc-8004-contracts\n- ERC-8004 Guide: Query Agent Identity & Reputation Onchain | evmquery\n  https://evmquery.com/blog/erc-8004-agent-identity-reputation-registry\n- GitHub - Sperax/erc8004-agents: Create and register "
+    },
+    {
+      "kind": "web_fetch",
+      "target": "https://erc-8004.quicknode.com/docs/contracts",
+      "ok": true,
+      "output": "HTTP 200 https://erc-8004.quicknode.com/docs/contracts\n\nERC-8004 contract addresses + ABIs · ERC-8004 Explorer 1,000,000 free RPC requests Just a wallet, via x402. Start building ERC-8004 Explorer by Agents Addresses Feedback Validations Networks Leaderboard Transfers Connect ⎋ testnet-filter#cycle\" data-testnet-on=\"0\" aria-label=\"Toggle testnet visibility\" aria-pressed=\"false\" title=\"Show testnet networks across the site\" class=\"hidden md:inline-flex items-center gap-1.5 h-9 px-3 text-xs font-m"
+    }
+  ],
+  "total_tokens": 186352,
+  "total_cost_usd": 3.2401799999999996,
+  "response_ids": [
+    "msg_011CeYoDkzsJ4TvkkUfV3MMx",
+    "msg_011CeYoFdHpzSexdXFqnasSQ",
+    "msg_011CeYoGmJZEqUXCUUZ1QqZg",
+    "msg_011CeYoJ9M9REMewVaNnMbjJ",
+    "msg_011CeYoLR5FQPSsvU1RBnZA6",
+    "msg_011CeYoLpPxEnp4F1uZaW5qr"
+  ]
+}
