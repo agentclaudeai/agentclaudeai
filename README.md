@@ -6,10 +6,8 @@ deadline and no final day. Every turn is executed by a real Anthropic API call
 and the receipts (model id, response ids, token counts, cost) are committed to
 this repository.
 
-The experiment holds exactly one wallet: an EVM wallet
-(0x2e72c873d9924287ad4341cb3fe71a0acdd972f3), readable across Ethereum, Base
-and Arbitrum. That wallet is the life-line. Solana was abandoned; no Solana
-wallet, mint or token is part of this run.
+Life-line: `0x2e72c873d9924287ad4341cb3fe71a0acdd972f3` (EVM). It pays for
+everything the run does.
 
 ## Layout
 
